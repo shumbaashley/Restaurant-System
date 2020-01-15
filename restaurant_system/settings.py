@@ -25,7 +25,7 @@ SECRET_KEY = 'a%$ix&9h-5)+h=!0%nv*j3ifeb!@0-=c9##-gyia=%^@#3(zmq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['agile-citadel-50841.herokuapp.com']
 
 
 # Application definition
