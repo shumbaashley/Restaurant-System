@@ -4,33 +4,28 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from restaurants.forms import UserForm, RestaurantForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 def home(request):
-    if not request.user.is_authenticated:
-        return render(request, 'restaurant/login.html', {"message": None})
-    context = {
-        "user": request.user 
-    }
+    return redirect(restaurant_home)
 
-    return render(request, 'restaurant/home.html', context)
+    #return render(request, 'restaurant/base.html', {})
 
-
-def login_view(request):
-    username = request.POST["username"]
-    password = request.POST["password"]
-
+def sign_in(request):
+    username = request.POST['username']
+    password = request.POST['password']
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
         return HttpResponseRedirect(reverse("home"))
     else:
-        return render(request, 'restaurant/login.html', {"message": "Invalid Credentials"})
+        return render(request, "restaurant/sign_in.html", {})
 
-def logout_view(request):
+def sign_out(request):
     logout(request)
-    return render(request, 'restaurant/login.html', {"message": "Logged Out"})
+    return render(request, "restaurant/sign_in.html", {})
 
 def sign_up(request):
     user_form = UserForm()
@@ -57,3 +52,29 @@ def sign_up(request):
         "user_form": user_form,
         "restaurant_form": restaurant_form
     })
+
+
+
+@login_required(login_url='/restaurant/sign-in')
+def restaurant_home(request):
+    return render(request, 'restaurant/base.html')
+
+
+@login_required(login_url='/restaurant/sign-in')
+def restaurant_account(request):
+    return render(request, 'restaurant/account.html', {})
+
+
+@login_required(login_url='/restaurant/sign-in')
+def restaurant_meal(request):
+    return render(request, 'restaurant/meal.html', {})
+
+
+@login_required(login_url='/restaurant/sign-in')
+def restaurant_order(request):
+    return render(request, 'restaurant/order.html', {})
+
+
+@login_required(login_url='/restaurant/sign-in')
+def restaurant_report(request):
+    return render(request, 'restaurant/report.html', {})
