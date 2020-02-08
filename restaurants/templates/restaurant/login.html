@@ -5,8 +5,14 @@
  
 {% block heading %}Restaurant - Sign In{% endblock %}
 
+
 {% block content %}
-    <form action="{% url 'restaurant-sign-in' %}" method="post">
+    {% if message %}
+        <div class="text-center">
+        {{ message }}
+        </div>
+    {% endif %}
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
             <label class="form-control-label">Username</label>
@@ -17,8 +23,8 @@
             <input class="form-control" type="password" name="password">
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary pull-right" value="Sign In">
+            <input type="submit" class="btn btn-primary pull-right" value="Login">
         </div>
     </form>
-    <span>Don't have an account. </span><a href="{% url 'restaurant-sign-up' %}">Sign Up</a>
+    <span>Don't have an account. </span><a href="{% url 'sign-up' %}">Sign Up</a>
 {% endblock %}
