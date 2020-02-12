@@ -9,11 +9,14 @@
     <!--link rel="stylesheet" href="{% static 'css/style.css' %}"-->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <title>{% block title %} {% endblock  %}</title>
+
+    {% block script %}
+    {% endblock %}
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="sidebar">
+            <div class="sidebar ">
                 {% block sidebar %} {% endblock  %}
             </div>
 
