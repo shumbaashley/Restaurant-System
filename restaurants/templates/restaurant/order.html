@@ -7,7 +7,7 @@
             <h4 class="panel-title text-center">Orders</h4>
         </div>
         
-        <div class="panel panel-body">
+        <div class="panel panel-body col">
         <table class="table table-bordered table-hover table-striped ">
             <thead>
                 <tr>
@@ -26,8 +26,6 @@
                         <td scope="row">{{ order.id }}</td>
                         <td>
                             {% for od in order.order_details.all %}
-                                {{ od.meal.name }} {{ od.meal.price }} 
-                            {{ od.meal.name }} {{ od.meal.price }} 
                                 {{ od.meal.name }} {{ od.meal.price }} 
                                 x {{ od.quantity }} = ${{ od.sub_total }}
                             {% endfor %}
