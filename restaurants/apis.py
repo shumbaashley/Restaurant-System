@@ -47,7 +47,7 @@ def customer_add_order(request):
     """
     if request.method == "POST":
         # Get token
-        access_token = AccessToken.objects.get(token=request.GET.get("access_token"), 
+        access_token = AccessToken.objects.get(token=request.POST.get("access_token"), 
         expires__gt = timezone.now())
 
     # Get Profile
@@ -55,12 +55,11 @@ def customer_add_order(request):
 
     # Check whether customer has any order that is not delivered
     if Order.objects.filter(customer = customer).exclude(status = Order.DELIVERED):
-        return JsonResponse({"status" : "failed", "error" : "Your last order must be completed"})
-
+        return JsonResponse({"status" : "failed", "error" : "Your last order must be completed."})
 
     # Check Address
     if not request.POST["address"]:
-        return JsonResponse({"status": "failed", "error": "Address is required"})
+        return JsonResponse({"status": "failed", "error": "Address is required."})
 
     # Get Order Details
     order_details = json.loads(request.POST["order_details"])
@@ -68,8 +67,8 @@ def customer_add_order(request):
     order_total = 0
 
     for meal in order_details:
-        order_total += Meal.objects.get(id = meal["meal_id"].price * meal["quantity"])
-
+        order_total += Meal.objects.get(id = meal["meal_id"]).price * meal["quantity"]
+ 
     if len(order_details) > 0:
         # Step 1 - Create an Order
         order = Order.objects.create(
@@ -86,7 +85,7 @@ def customer_add_order(request):
                 order = order,
                 meal_id = meal["meal_id"],
                 quantity = meal["quantity"],
-                subtotal = Meal.objects.get(id = meal["meal_id"]).price * meal["quantity"]
+                sub_total = Meal.objects.get(id = meal["meal_id"]).price * meal["quantity"]
         )
 
         return JsonResponse({"status": "success" })
@@ -140,7 +139,7 @@ def driver_get_ready_orders(request):
 def driver_pick_order(request):
     if request.method == "POST":
         # Get Token
-        access_token = AccessToken.objects.get(token = request.GET.get("access_token"), 
+        access_token = AccessToken.objects.get(token = request.POST.get("access_token"), 
         expires__gt = timezone.now())
 
 
@@ -184,7 +183,7 @@ def driver_get_latest_order(request):
 
 # POST params: access_token, order_id
 @csrf_exempt
-def driver_get_complete_order(request):
+def driver_complete_order(request):
     access_token = AccessToken.objects.get(token = request.POST.get("access_token"), 
         expires__gt = timezone.now())
 

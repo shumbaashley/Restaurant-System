@@ -1,9 +1,13 @@
 {% extends 'restaurant/base.html' %}
 
 {% block page %}
-    <div>
-        <h4 class="text-center">Meals</h4>
+<div class="panel panel-default">
+    <div class="panel panel-heading">
+        <h4 class="panel-title text-center text-white">Meals</h4>
     </div>
+    
+    <div class="panel panel-body">
+    
     <div>
         <a href="{% url 'restaurant-add-meal' %}" class="btn btn-primary">Add Meal</a>
         <br>
@@ -33,5 +37,6 @@
             {% endfor %}
         </tbody>
     </table>
+    </div>
 
 {% endblock %}

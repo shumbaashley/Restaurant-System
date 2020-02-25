@@ -3,12 +3,11 @@
 
 
 {% block page %}
-<div>
-    <h4>
-        Edit Meal
-    </h4>
-</div>
-<div>
+<div class="panel">
+    <div class="panel-heading">
+        <h4 class="panel-title text-center text-white">Edit Meal</h4>
+    </div>
+    <div class="panel-body">
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}

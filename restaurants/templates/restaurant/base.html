@@ -13,11 +13,11 @@
                     url: 'api/restaurant/order/notification/' + now.toISOString() + '/',
                     method: 'GET',
                     success: function(data){
-                        if (data['notification'] == 0){
-                            $('.badge').text('');
+                        if (data['notification'] === 0){
+                            $('.badge badge-danger badge-pill').text('');
 
                         } else {
-                            $('.badge').text(data['notification']);
+                            $('.badge badge-danger badge-pill').text(data['notification']);
                         }
                     }
                 })
@@ -28,33 +28,34 @@
 
 {% block sidebar %}
 
+
  {% url 'restaurant-order'  as restaurant_order_url %}
  {% url 'restaurant-meal'  as restaurant_meal_url %}
  {% url 'restaurant-report'  as restaurant_report_url %}
  {% url 'restaurant-account'  as restaurant_account_url %}
 
-<div class="text-center">
-    <img class="img-circle" src="{{ MEDIA_URL }}{{ request.user.restaurant.logo }}"  width="80" height="80">
+<div class="text-center card ">
+    <div class="card-body">
+        <img class="card-img" src="{{ MEDIA_URL }}{{ request.user.restaurant.logo }}" width="80" height="80">
+        <br>
+        <br>
+        <h4 class="card-title text-white">Hi, {{request.user.get_full_name}}</h4>
+        <h5 class="card-text">{{request.user.restaurant.name}}</h5>
+    </div>
 </div>
-<br>
-<br>
 
-<h4>Hi, {{request.user.get_full_name}}</h4>
-<h5>{{request.user.restaurant.name}}</h5>
-<hr>
-<br>
 <div class="list-group">
     <span class="text-uppercase">Dashboard</span>
      
-    <a href="{% url 'restaurant-order' %}" class="list-group-item  {% if request.path == restaurant_order_url %} active {% endif %} ">
-        Orders
-        <span class="badge"></span>
+    <a href="{% url 'restaurant-order' %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center {% if request.path == restaurant_order_url %} active {% endif %} ">
+        Orders  
+        <span class="badge badge-danger badge-pill"></span>
     </a>
-    <a href="{% url 'restaurant-meal' %}" class="list-group-item {% if request.path == restaurant_meal_url %} active {% endif %} ">Meal</a>           
-    <a href="{% url 'restaurant-report' %}" class="list-group-item {% if request.path == restaurant_report_url %} active {% endif %}  ">Report</a>
+    <a href="{% url 'restaurant-meal' %}" class="list-group-item list-group-item-action {% if request.path == restaurant_meal_url %} active {% endif %} ">Meal</a>           
+    <a href="{% url 'restaurant-report' %}" class="list-group-item list-group-item-action {% if request.path == restaurant_report_url %} active {% endif %}  ">Report</a>
 <br>
     <span class="text-uppercase">Profile</span>
-    <a href="{% url 'restaurant-account' %}" class="list-group-item {% if request.path == restaurant_account_url %} active {% endif %} ">Account</a>
+    <a href="{% url 'restaurant-account' %}" class="list-group-item list-group-item-action {% if request.path == restaurant_account_url %} active {% endif %} ">Account</a>
 </div>
 
 <br>
