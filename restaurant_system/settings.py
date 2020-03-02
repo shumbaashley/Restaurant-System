@@ -89,6 +89,16 @@ DATABASES = {
     }
 }
 
+###DATABASES = {
+#    "default": {
+#        "ENGINE": "django.db.backends.postgresql_psycopg2",
+#        "NAME": "restaurant",
+#        "USER": "postgres",
+#        "PASSWORD": "02june1997",
+#        "HOST": "localhost",
+#        "PORT": "5432",
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -141,6 +151,11 @@ AUTHENTICATION_BACKENDS = (
    'rest_framework_social_oauth2.backends.DjangoOAuth2',
    'django.contrib.auth.backends.ModelBackend',
 )
+
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Facebook configuration
 SOCIAL_AUTH_FACEBOOK_KEY = '560513864530369'
