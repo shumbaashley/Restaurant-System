@@ -82,12 +82,12 @@ WSGI_APPLICATION = 'restaurant_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-    }
-}
+###DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': 'db.sqlite3',
+#    }
+#}
 
 ###DATABASES = {
 #    "default": {
@@ -99,6 +99,18 @@ DATABASES = {
 #        "PORT": "5432",
 #    }
 #}
+
+# settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        "NAME": "sql12326144",
+        "USER": "sql12326144",
+        "PASSWORD": "r7f8I55gsu",
+        "HOST": "http://sql12.freemysqlhosting.net/",
+        "PORT": "3306",
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
