@@ -46,12 +46,12 @@
 
 <div class="list-group">
     <span class="text-uppercase">Dashboard</span>
-     
+
     <a href="{% url 'restaurant-order' %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center {% if request.path == restaurant_order_url %} active {% endif %} ">
-        Orders  
+        Orders
         <span class="badge badge-danger badge-pill"></span>
     </a>
-    <a href="{% url 'restaurant-meal' %}" class="list-group-item list-group-item-action {% if request.path == restaurant_meal_url %} active {% endif %} ">Meal</a>           
+    <a href="{% url 'restaurant-meal' %}" class="list-group-item list-group-item-action {% if request.path == restaurant_meal_url %} active {% endif %} ">Meal</a>
     <a href="{% url 'restaurant-report' %}" class="list-group-item list-group-item-action {% if request.path == restaurant_report_url %} active {% endif %}  ">Report</a>
 <br>
     <span class="text-uppercase">Profile</span>

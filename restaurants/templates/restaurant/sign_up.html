@@ -7,13 +7,14 @@
 {% endblock %}
 
 {% block heading %}
-    Restaurant Sign Up
+    Sign Up
 {% endblock %}
 
 {% block content %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form user_form %}
+          <h2 class="text-center">Create Restaurant </h2>
         {% bootstrap_form restaurant_form %}
         <input type="submit" value="Sign Up">
     </form>

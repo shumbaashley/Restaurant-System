@@ -2,7 +2,7 @@ Restaurant System Web Application
 
 How to Run:
 1. Open a terminal and navigate to Restaurant-System folder
-2. Run the following command to activate the virtual environment
+2. Run the following command to activate the virtual environment (on Linux)
 
 . venv/bin/activate
 
@@ -10,8 +10,18 @@ How to Run:
 
 python3 manage.py runserver
 
-4. Open browser and go to localhost:8000 to sign in
+4. Open browser and go to localhost:8000
 
-5. Use the username "guest"  and the password "guestuser" to login
+OPTIONS
 
-The same username and password can be used to login at localhost:8000/admin
+A. Sign In
+
+Use the username "guest"  and the password "guestuser" to login
+
+This same username and password can be used to login at localhost:8000/admin
+
+OR
+
+B. Sign Up
+
+Create your own user account and register a restaurant
