@@ -10,7 +10,7 @@
     <title>{% block title %} {% endblock  %}</title>
 
     {% block script %}
-    
+
     {% endblock %}
 </head>
 <body>
@@ -47,7 +47,7 @@
             background-color: #3F3F63;
             color: #b6b4c1;
         }
-        
+
         .sidebar .list-group .list-group-item.active,
         .sidebar .list-group .list-group-item:hover{
             background-color: #383957;
@@ -60,7 +60,7 @@
             padding:20px 30px;
 
         }
-        
+
         .panel{
             border-radius: 5px;
         }
@@ -78,12 +78,12 @@
     </style>
     <div class="container-fluid">
         <div class="row">
-            <div class="sidebar">
+            <div class="sidebar col-lg-2 col-md-2 col-sm-12">
                 {% block sidebar %} {% endblock  %}
             </div>
 
-            <div class="container content">
-                {% block page %} {% endblock  %}                
+            <div class="container content col-lg-10 col-md-10 col-sm-12">
+                {% block page %} {% endblock  %}
             </div>
         </div>
     </div>
